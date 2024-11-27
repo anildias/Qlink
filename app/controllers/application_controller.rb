@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
             user = User.find(current_user.id)
                     options = {
    			body: {
-     		client_id: '935182387541.apps.googleusercontent.com',
-     		client_secret: 'xGD61KoGpOhnurYtRWNcZJ3l',
+     		client_id: ENV['GOOGLE_CLIENT_ID'],
+     		client_secret: ENV['GOOGLE_CLIENT_SECRET'],
      		refresh_token: user.refresh_token,
      		grant_type: 'refresh_token'
    			},
@@ -43,9 +43,9 @@ class ApplicationController < ActionController::Base
  			end
             @client = Google::APIClient.new 
             @client.authorization.access_token = user.token
-            @client.authorization.client_id = '935182387541.apps.googleusercontent.com'
-            @client.authorization.client_secret = 'xGD61KoGpOhnurYtRWNcZJ3l'
-            @client.authorization.scope = 'https://www.googleapis.com/auth/calendar'
+            @client.authorization.client_id = ENV['GOOGLE_CLIENT_ID']
+            @client.authorization.client_secret = ENV['GOOGLE_CLIENT_SECRET']
+            @client.authorization.scope = ENV['GOOGLE_CALENDAR_URL']
             return @client
 	end
 
