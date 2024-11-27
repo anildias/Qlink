@@ -2,8 +2,8 @@ CarrierWave.configure do |config|
 
  config.fog_credentials = {
    :provider               => 'AWS',                                         # required
-   :aws_access_key_id      => 'AKIAIS7NMF5PS3DYZRJQ',                        # required
-   :aws_secret_access_key  => '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',    # required
+   :aws_access_key_id      => ENV['AWS_ACCESS_KEY'],                         # required
+   :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'],                  # required
  }
 
  config.fog_directory  = 'qlink'
